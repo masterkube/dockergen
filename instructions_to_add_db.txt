@@ -1,4 +1,4 @@
-1. bash into your ==> docker exec -u 0 -it d9b33073a7fb /bin/sh
+1. bash into your ==> docker exec -u 0 -it <Container - ID > /bin/sh
 2. move to dir    ==> cd webapps/Axon/WEB-INF/classes
 3. create file    ==> nano database.properties
 4. copy content and paste
