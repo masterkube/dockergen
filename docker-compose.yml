@@ -1,0 +1,18 @@
+version: "3"
+services:
+  employee-jdbc:
+    image: masterkube/axon:1.0
+    ports:
+      - "9000:8080"
+    networks:
+      - kube-mysql
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: masterkube/mysql:1.0
+    networks:
+      - kube-mysql
+
+networks:
+  kube-mysql:
