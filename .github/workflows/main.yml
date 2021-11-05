@@ -33,8 +33,6 @@ jobs:
     - name: Scan
       uses: ShiftLeftSecurity/scan-action@master
       env:
-        VDB_HOME: ${{ github.workspace }}/vdb
-        WORKSPACE: ""
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SCAN_AUTO_BUILD: true
       with:
