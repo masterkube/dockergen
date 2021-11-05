@@ -29,5 +29,9 @@ jobs:
       run: |
         docker save -o axon.tar masterkube/axon:1.0
         docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/scan scan --src /app/axon.tar -o /app/reports --type docker
-
+    
+    - name: Upload report
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: /app/reports
       
