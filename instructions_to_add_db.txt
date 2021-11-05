@@ -3,7 +3,15 @@
 3. create file    ==> nano database.properties
 4. copy content and paste
 
-    connection.driver=com.mysql.jdbc.Driver
-    connection.url=jdbc:mysql://143.110.179.157:3306/masterkubedb?characterEncoding=latin1
-    connection.userName=master
-    connection.password=master
+connection.driver=com.mysql.jdbc.Driver
+connection.url=jdbc:mysql://143.110.179.157:3306/masterkubedb?characterEncoding=latin1
+connection.userName=master
+connection.password=master
+
+docker cp Dump-Files/. 52570be35400<CONTAINER_ID>:.
+ls / ->files
+ls ->tomcat
+
+Do this for every file
+cp /sig .
+cp sig webapps/Axon/WEB-INF/classes
