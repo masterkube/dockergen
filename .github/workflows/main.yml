@@ -25,13 +25,25 @@ jobs:
     - name: Docker Push
       run: docker push masterkube/axon:1.0
       
-    - name: Perform Scan
-      run: |
-        docker save -o axon.tar masterkube/axon:1.0
-        docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/scan scan --src /app/axon.tar -o /app/reports --type docker
+#     - name: Perform Scan
+#       run: |
+#         docker save -o axon.tar masterkube/axon:1.0
+#         docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/scan scan --src /app/axon.tar -o /app/reports --type docker
     
-    - name: Upload report
-      uses: github/codeql-action/upload-sarif@v1
+    - name: Scan
+      uses: ShiftLeftSecurity/scan-action@master
+      env:
+        VDB_HOME: ${{ github.workspace }}/vdb
+        WORKSPACE: ""
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SCAN_AUTO_BUILD: true
       with:
-        sarif_file: /app/reports
-      
+        type: "credscan,java,depscan"
+        output: reports
+        
+    - name: Upload scan reports
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: shiftleft-scan-reports
+        path: reports
+
