@@ -18,24 +18,16 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+        
     - name: Build the Docker image
       run: docker build . -t masterkube/axon:1.0
       
     - name: Docker Push
       run: docker push masterkube/axon:1.0
       
-    - name: Scan
-      uses: ShiftLeftSecurity/scan-action@master
-      env:
-        VDB_HOME: ${{ github.workspace }}/vdb
-        WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SCAN_AUTO_BUILD: true
-      with:
-        output: reports
-        
-    - name: Upload scan reports
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: shiftleft-scan-reports
-        path: reports
+    - name: Perform Scan
+      run: |
+        docker save -o axon.tar masterkube/axon:1.0
+        docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/scan scan --src /app/axon.tar -o /app/reports --type docker
+
+      
