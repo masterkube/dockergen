@@ -4,14 +4,10 @@
 4. copy content and paste
 
 connection.driver=com.mysql.jdbc.Driver
-connection.url=jdbc:mysql://143.110.179.157:3306/masterkubedb?characterEncoding=latin1
-connection.userName=master
-connection.password=master
+connection.url=jdbc:mysql://mysqldoc:3306/masterkubedb?characterEncoding=latin1
+connection.userName=root
+connection.password=root
 
-docker cp Dump-Files/. 52570be35400<CONTAINER_ID>:.
-ls / ->files
-ls ->tomcat
-
-Do this for every file
-cp /sig .
-cp sig webapps/Axon/WEB-INF/classes
+1. docker create network axon-net
+2. docker run -d --net axon-net --name mysqldoc masterkube/axonmysql:3.0
+3. docker run -d --net axon-net --link mysqldoc --name axon3 masterkube/axon:3.0
