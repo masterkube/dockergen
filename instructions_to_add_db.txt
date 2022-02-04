@@ -12,7 +12,8 @@ connection.password=root
 2. docker run -d --net axon-net --name mysqldoc masterkube/axonmysql:3.0
 3. docker run -d --net axon-net --link mysqldoc --name axon3 masterkube/axon:3.0
 
-docker exec -it mysqldoc bash;
+docker exec -it mysqldoc bash
+mysql -uroot -proot -h 172.19.0.3
 create database masterkubedb;
 source final2.sql;
 
