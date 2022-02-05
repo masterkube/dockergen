@@ -17,4 +17,11 @@ mysql -uroot -proot -h 172.19.0.3
 create database masterkubedb;
 source final2.sql;
 
-
+root@8bdfe761c2d6:/usr/local/tomcat# rm webapps/Axon/WEB-INF/classes/ActualDetails.properties
+root@8bdfe761c2d6:/usr/local/tomcat# rm webapps/Axon/WEB-INF/classes/ApprovedDetails.xml
+root@8bdfe761c2d6:/usr/local/tomcat# rm webapps/Axon/WEB-INF/classes/mkpubkey
+root@8bdfe761c2d6:/usr/local/tomcat# rm webapps/Axon/WEB-INF/classes/sig
+root@8bdfe761c2d6:/usr/local/tomcat# cp ActualDetails.properties webapps/Axon/WEB-INF/classes/
+root@8bdfe761c2d6:/usr/local/tomcat# cp ApprovedDetails.xml webapps/Axon/WEB-INF/classes/
+root@8bdfe761c2d6:/usr/local/tomcat# cp mkpubkey webapps/Axon/WEB-INF/classes/
+root@8bdfe761c2d6:/usr/local/tomcat# cp sig webapps/Axon/WEB-INF/classes/
