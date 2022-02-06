@@ -5,7 +5,7 @@ connection.password=root
 
 1. docker create network axon-net
 2. docker run -d --net axon-net --name mysqldoc masterkube/axonmysql:3.0
-3. docker run -d --net axon-net --link mysqldoc --name axon3 masterkube/axon:3.0
+3. docker run -d -p 3000:8080 --net axon-net --link mysqldoc --name axon3 masterkube/axon:3.0
 4. docker run -d --name console -p 80:80 masterkube/console:2.0
 
 docker exec -it mysqldoc bash
