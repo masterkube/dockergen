@@ -1,3 +1,20 @@
+# Install docker
+
+sudo apt-get remove docker docker-engine docker.io
+sudo apt-get update
+sudo apt install docker.io
+sudo snap install docker
+docker --version
+
+# NOTE: if [docker --version] throws error use sudo before that [sudo docker --version].
+
+# Docker login
+
+docker login
+username : masterkube
+password : mkube@123
+
+
 # Infra setup
 
 docker create network axon-net
