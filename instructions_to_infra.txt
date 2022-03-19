@@ -11,8 +11,8 @@ docker --version
 # Docker login
 
 docker login
-username : masterkube
-password : mkube@123
+# username : masterkube
+# password : mkube@123
 
 
 # Infra setup
@@ -25,18 +25,18 @@ docker run -d --name console -p 80:80 masterkube/console:2.0
 
 # Voice setup
 
-docker run -d --name voice -p 90:80 masterkube/axonvoice:1.0
+# docker run -d --name voice -p 90:80 masterkube/axonvoice:1.0
 
 
 # Database properties file
 
-connection.driver=com.mysql.jdbc.Driver
-connection.url=jdbc:mysql://mysqldoc:3306/masterkubedb?characterEncoding=latin1
-connection.userName=root
-connection.password=root
+# connection.driver=com.mysql.jdbc.Driver
+# connection.url=jdbc:mysql://mysqldoc:3306/masterkubedb?characterEncoding=latin1
+# connection.userName=root
+# connection.password=root
 
 
-# Mysql continer data loading 
+# Mysql container data loading 
 
 docker exec -it mysqldoc bash
 mysql -uroot -proot -h 172.19.0.3
