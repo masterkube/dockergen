@@ -35,6 +35,17 @@ docker run -d --name console -p 80:80 masterkube/console:2.0
 # connection.userName=root
 # connection.password=root
 
+# To get the SQL file
+# first time doing this ?
+
+git clone https://github.com/masterkube/Dump-Files.git
+cd Dump-Files
+
+# aleady have repo in machine
+
+cd Dump-Files
+git pull
+
 
 # Mysql container data loading 
 
