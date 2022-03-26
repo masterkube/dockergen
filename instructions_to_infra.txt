@@ -48,10 +48,15 @@ cd Dump-Files
 git pull
 
 
+# How to Get Mysql Container IP
+
+docker inspect mysqldoc --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
+
+
 # Mysql container data loading 
 
 docker exec -it mysqldoc bash
-mysql -uroot -proot -h 172.19.0.3
+mysql -uroot -proot -h <Container-IP>
 create database masterkubedb;
 source <SQLFILENAME>.sql;
 
