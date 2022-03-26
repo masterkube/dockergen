@@ -73,3 +73,10 @@ root@8bdfe761c2d6:/usr/local/tomcat# cp ActualDetails.properties webapps/Axon/WE
 root@8bdfe761c2d6:/usr/local/tomcat# cp ApprovedDetails.xml webapps/Axon/WEB-INF/classes/
 root@8bdfe761c2d6:/usr/local/tomcat# cp mkpubkey webapps/Axon/WEB-INF/classes/
 root@8bdfe761c2d6:/usr/local/tomcat# cp sig webapps/Axon/WEB-INF/classes/
+
+
+# Backup
+docker exec mysqldoc /usr/bin/mysqldump -u root --password=root DATABASE_NAME > backup.sql
+
+# Restore
+cat backup.sql | docker exec -i mysqldoc /usr/bin/mysql -u root --password=root DATABASE_NAME
