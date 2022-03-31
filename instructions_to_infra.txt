@@ -55,7 +55,9 @@ docker inspect mysqldoc --format='{{range .NetworkSettings.Networks}}{{.IPAddres
 
 # Mysql container data loading 
 
-docker exec -it mysqldoc bash
+#docker exec -it mysqldoc bash
+
+apt install mysql-client-core-8.0 
 mysql -uroot -proot -h <Container-IP>
 create database masterkubedb;
 source <SQLFILENAME>.sql;
