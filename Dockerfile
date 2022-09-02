@@ -1,4 +1,4 @@
-FROM tomcat:9.0.48-jdk11-openjdk-slim
+FROM tomcat:8.5.47-jdk8-openjdk
   
 COPY ./Axon.war /usr/local/tomcat/webapps/
 
