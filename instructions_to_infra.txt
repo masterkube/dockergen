@@ -82,3 +82,7 @@ docker exec mysqldoc /usr/bin/mysqldump -u root --password=root DATABASE_NAME > 
 
 # Restore
 cat backup.sql | docker exec -i mysqldoc /usr/bin/mysql -u root --password=root DATABASE_NAME
+
+
+#kql
+container.name : "axon3" and   message: *exception* or message : *error*
